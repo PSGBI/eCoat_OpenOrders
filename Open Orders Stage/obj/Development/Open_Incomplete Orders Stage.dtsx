@@ -1,0 +1,907 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/3/2018 2:49:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="USTULD0086"
+  DTS:CreatorName="AD\seabur"
+  DTS:DTSID="{CB2E40FA-373B-4ACA-8551-995157A87A78}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Open_Incomplete Orders Stage"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{D600BEAE-1DDB-4E86-B6BB-0560A40B63DC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SAMSON.S1049ZKM.apache]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{82A42353-1BD0-4B4D-976F-467A55B75498}"
+      DTS:ObjectName="SAMSON.S1049ZKM.apache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SAMSON;User ID=apache;Initial Catalog=S1049ZKM;Provider=IBMDASQL.DataSource.1;Persist Security Info=True;Force Translate=37;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZXKTKapgt0KTPz5HwT94zAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABijIxIjM1HYZT6iisCXdmnAAAAAASAAACgAAAAEAAAAE4qCBjMYF4F0hzfTHa6FiYQAAAAWV1Da9EbxIkCUYB2d7UkkhQAAABEEPrepMLOp/+/QBuCYUNWAGQWOg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ustulsrs0003\psgbi.PSG_Hub.ssis]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B0C900FF-396A-43CB-A232-20C05C7239CB}"
+      DTS:ObjectName="ustulsrs0003\psgbi.PSG_Hub.ssis">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ustulsrs0003\psgbi;User ID=ssis;Initial Catalog=PSG_Hub;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZXKTKapgt0KTPz5HwT94zAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAABG779U9q0M1M1IOVnsgYOAAAAAASAAACgAAAAEAAAAN9PsXyv3HPRirmeMmWxrF0YAAAAkSrt/d65s8vJNi0OqUQlg50NkmXOUJY9FAAAADkKE722QkNdDQE45Ub9u386Zxbb</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\OPEN Orders"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CCA7E2FA-C5AF-4CA3-9501-D2A909760DA7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="OPEN Orders"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\OPEN Orders\OPS_OpenOrder_Stage"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OPS_OpenOrder_Stage"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[OPS_OpenOrder_Stage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ustulsrs0003\psgbi.PSG_Hub.ssis]"
+                  connectionManagerRefId="Package.ConnectionManagers[ustulsrs0003\psgbi.PSG_Hub.ssis]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[WORKCENTER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="WORKCENTER"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[WORKCENTER]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[WORKCENTER]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[ORDERNUMBER]"
+                      cachedDataType="numeric"
+                      cachedName="ORDERNUMBER"
+                      cachedPrecision="8"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ORDERNUMBER]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[ORDERNUMBER]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[SHORTITEM]"
+                      cachedDataType="numeric"
+                      cachedName="SHORTITEM"
+                      cachedPrecision="8"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[SHORTITEM]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[SHORTITEM]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[PARTNUMBER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PARTNUMBER"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[PARTNUMBER]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[PARTNUMBER]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[PARTDESC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="PARTDESC"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[PARTDESC]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[PARTDESC]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[STATUSCODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="STATUSCODE"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[STATUSCODE]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[STATUSCODE]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[OPSDATEINT]"
+                      cachedDataType="numeric"
+                      cachedName="OPSDATEINT"
+                      cachedPrecision="6"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[OPSDATEINT]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[OPSDATEINT]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[REQUESTEDQTY]"
+                      cachedDataType="decimal"
+                      cachedName="REQUESTEDQTY"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[REQUESTEDQTY]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[REQUESTEDQTY]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[COMPLETEDQTY]"
+                      cachedDataType="decimal"
+                      cachedName="COMPLETEDQTY"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[COMPLETEDQTY]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COMPLETEDQTY]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[WCDESC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="WCDESC"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[WCDESC]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[WCDESC]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[UOM]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UOM"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[UOM]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[UOM]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[COLORCODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="COLORCODE"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[COLORCODE]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COLORCODE]" />
+                    <inputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].Columns[COLOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="COLOR"
+                      externalMetadataColumnId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[COLOR]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COLOR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[WORKCENTER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="WORKCENTER" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ORDERNUMBER]"
+                      dataType="numeric"
+                      name="ORDERNUMBER"
+                      precision="8" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[SHORTITEM]"
+                      dataType="numeric"
+                      name="SHORTITEM"
+                      precision="8" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[PARTNUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PARTNUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[PARTDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PARTDESC" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[STATUSCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="STATUSCODE" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[OPSDATEINT]"
+                      dataType="numeric"
+                      name="OPSDATEINT"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[REQUESTEDQTY]"
+                      dataType="numeric"
+                      name="REQUESTEDQTY"
+                      precision="28" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[COMPLETEDQTY]"
+                      dataType="numeric"
+                      name="COMPLETEDQTY"
+                      precision="28" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[WCDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="WCDESC" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[UOM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UOM" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[COLORCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="COLORCODE" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input].ExternalColumns[COLOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="COLOR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OPEN Orders\OPS_OpenOrder_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\OPS_OpenOrder_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OPEN Orders\OPS_OpenOrder_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OPEN Orders\Samson"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Samson"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+	varchar(wlmcu,50,37) as WorkCenter,
+		wadoco AS OrderNumber, 
+		waitm AS ShortItem,
+		varchar(walitm,50,37) as PartNumber,
+		wadl01 AS PartDesc, 
+		varchar(wasrst,50,37) as StatusCode,
+		wldrqj AS OpsDateInt, 
+		wluorg AS RequestedQTY,
+		wlsoqs AS CompletedQTY,
+		mcdl01 AS WCDesc,
+		varchar(wluom,50,37) UoM,
+		varchar(wawr02,50,37) ColorCode,
+		DRDL01 AS Color
+from amsdta.f4801
+		inner join amsdta.f3112 on wadoco=wldoco and wadcto=wldcto
+		join amsdta.F0006 on WLMCU = MCMCU
+		left outer join amscom.f0005 on DRSY='00' and DRRT='W2' and TRIM(DRKY)=TRIM(WAWR02)
+		where wasrst in ('41','42','45') 
+		and wamcu = '         100'
+		and wlopst &lt;&gt; '90'
+		and wluorg &gt; wlsoqs</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OPEN Orders\Samson.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SAMSON.S1049ZKM.apache]"
+                  connectionManagerRefId="Package.ConnectionManagers[SAMSON.S1049ZKM.apache]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[WORKCENTER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[WORKCENTER]"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[WORKCENTER]"
+                      name="WORKCENTER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[ORDERNUMBER]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[ORDERNUMBER]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[ORDERNUMBER]"
+                      name="ORDERNUMBER"
+                      precision="8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[SHORTITEM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[SHORTITEM]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[SHORTITEM]"
+                      name="SHORTITEM"
+                      precision="8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[PARTNUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[PARTNUMBER]"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[PARTNUMBER]"
+                      name="PARTNUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[PARTDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[PARTDESC]"
+                      length="30"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[PARTDESC]"
+                      name="PARTDESC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[STATUSCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[STATUSCODE]"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[STATUSCODE]"
+                      name="STATUSCODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[OPSDATEINT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[OPSDATEINT]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[OPSDATEINT]"
+                      name="OPSDATEINT"
+                      precision="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[REQUESTEDQTY]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[REQUESTEDQTY]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[REQUESTEDQTY]"
+                      name="REQUESTEDQTY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COMPLETEDQTY]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[COMPLETEDQTY]"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COMPLETEDQTY]"
+                      name="COMPLETEDQTY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[WCDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[WCDESC]"
+                      length="30"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[WCDESC]"
+                      name="WCDESC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[UOM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[UOM]"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[UOM]"
+                      name="UOM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COLORCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[COLORCODE]"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COLORCODE]"
+                      name="COLORCODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COLOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[COLOR]"
+                      length="30"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].Columns[COLOR]"
+                      name="COLOR"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[WORKCENTER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="WORKCENTER" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[ORDERNUMBER]"
+                      dataType="numeric"
+                      name="ORDERNUMBER"
+                      precision="8" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[SHORTITEM]"
+                      dataType="numeric"
+                      name="SHORTITEM"
+                      precision="8" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[PARTNUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PARTNUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[PARTDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PARTDESC" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[STATUSCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="STATUSCODE" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[OPSDATEINT]"
+                      dataType="numeric"
+                      name="OPSDATEINT"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[REQUESTEDQTY]"
+                      dataType="decimal"
+                      name="REQUESTEDQTY" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[COMPLETEDQTY]"
+                      dataType="decimal"
+                      name="COMPLETEDQTY" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[WCDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="WCDESC" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[UOM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UOM" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[COLORCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="COLORCODE" />
+                    <externalMetadataColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output].ExternalColumns[COLOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="COLOR" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[WORKCENTER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[WORKCENTER]"
+                      name="WORKCENTER" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[ORDERNUMBER]"
+                      dataType="numeric"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[ORDERNUMBER]"
+                      name="ORDERNUMBER"
+                      precision="8" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[SHORTITEM]"
+                      dataType="numeric"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[SHORTITEM]"
+                      name="SHORTITEM"
+                      precision="8" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[PARTNUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[PARTNUMBER]"
+                      name="PARTNUMBER" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[PARTDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[PARTDESC]"
+                      name="PARTDESC" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[STATUSCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[STATUSCODE]"
+                      name="STATUSCODE" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[OPSDATEINT]"
+                      dataType="numeric"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[OPSDATEINT]"
+                      name="OPSDATEINT"
+                      precision="6" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[REQUESTEDQTY]"
+                      dataType="decimal"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[REQUESTEDQTY]"
+                      name="REQUESTEDQTY" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[COMPLETEDQTY]"
+                      dataType="decimal"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[COMPLETEDQTY]"
+                      name="COMPLETEDQTY" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[WCDESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[WCDESC]"
+                      name="WCDESC" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[UOM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[UOM]"
+                      name="UOM" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[COLORCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[COLORCODE]"
+                      name="COLORCODE" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[COLOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[COLOR]"
+                      name="COLOR" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\OPEN Orders.Paths[OLE DB Source Output]"
+              endId="Package\OPEN Orders\OPS_OpenOrder_Stage.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OPEN Orders\Samson.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Stage"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{49F3B628-3789-4987-8C3F-BB95884693C4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Stage"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B0C900FF-396A-43CB-A232-20C05C7239CB}"
+          SQLTask:SqlStatementSource="truncate table psg_hub.dbo.OPS_OpenOrder_Stage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2178F17E-27F4-40C0-9324-A8A4889E0D78}"
+      DTS:From="Package\Truncate Stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\OPEN Orders" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\OPEN Orders"
+          TopLeft="216.571432259618,162.729414046924" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Truncate Stage"
+          TopLeft="180.000003065382,66.6823538763713" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="255.200003065382,108.282353876371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.3714291942363,54.4470601705532"
+              Start="0,0"
+              End="31.3714291942363,46.9470601705532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.2235300852766" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2235300852766"
+                    Point2="0,27.2235300852766"
+                    Point3="4,27.2235300852766" />
+                  <mssgle:LineSegment
+                    End="27.3714291942363,27.2235300852766" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.3714291942363,27.2235300852766"
+                    Point2="31.3714291942363,27.2235300852766"
+                    Point3="31.3714291942363,31.2235300852766" />
+                  <mssgle:LineSegment
+                    End="31.3714291942363,46.9470601705532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\OPEN Orders">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="115.2,41.6"
+          Id="Package\OPEN Orders\Samson"
+          TopLeft="121.142859205908,52.6117654437425" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\OPEN Orders\OPS_OpenOrder_Stage"
+          TopLeft="203.428574892939,150.494119757682" />
+        <EdgeLayout
+          Id="Package\OPEN Orders.Paths[OLE DB Source Output]"
+          TopLeft="178.742859205908,94.2117654437425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118.685715687032,56.2823543139395"
+              Start="0,0"
+              End="118.685715687032,48.7823543139395">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1411771569698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.1411771569698"
+                    Point2="0,28.1411771569698"
+                    Point3="4,28.1411771569698" />
+                  <mssgle:LineSegment
+                    End="114.685715687032,28.1411771569698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.685715687032,28.1411771569698"
+                    Point2="118.685715687032,28.1411771569698"
+                    Point3="118.685715687032,32.1411771569698" />
+                  <mssgle:LineSegment
+                    End="118.685715687032,48.7823543139395" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\OPEN Orders\Samson">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OPEN Orders\OPS_OpenOrder_Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
